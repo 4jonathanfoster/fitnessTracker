@@ -19,7 +19,10 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/workout', { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || 
+   // 'mongodb://localhost/workout'
+    'mongodb+srv://Texas9:Texas9@cluster0.exnkd.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+    , { useNewUrlParser: true });
 
 // Routes
 
@@ -30,6 +33,7 @@ app.get("/exercise", ({ body }, res) => {
     // You must create these methods in the model.
     res.sendFile(path.join(__dirname, './public', 'exercise.html'))
 });
+
 app.get("/stats", ({ body }, res) => {
     // Create a new user using req.body
 
